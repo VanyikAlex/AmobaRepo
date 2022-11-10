@@ -3,6 +3,9 @@ import pygame
 window = pygame.display.set_mode((600,600))
 pygame.display.set_caption("Amőba")
 
+letterX = pygame.image.load('AmobaRepo\Játék\proj\images')
+
+
 running = True
 
 while running:
