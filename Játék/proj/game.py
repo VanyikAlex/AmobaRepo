@@ -1,10 +1,13 @@
 import pygame
+from grid import Grid
+
 
 window = pygame.display.set_mode((600,600))
 pygame.display.set_caption("Amőba")
 
-letterX = pygame.image.load('AmobaRepo\Játék\proj\images')
+letterX = pygame.image.load('Játék/proj/images/letter_x.png')
 
+grid = Grid(pygame)
 
 running = True
 
