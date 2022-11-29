@@ -9,7 +9,6 @@ winner_font = pygame.font.SysFont("Times New Roman", 40)
 restart_font = pygame.font.SysFont("Times New Roman", 25)
 
 grid = Grid(pygame)
-# grid.show_grid()
 
 running = True
 letter = "X"

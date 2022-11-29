@@ -2,11 +2,11 @@ class Grid:
     def __init__(self, pygame):
         self.grid = [[0 for x in range(3)] for y in range(3)]
 
-        self.grid_lines = [((0, 200), (600, 200)),  # first horizontal line
-                           ((0, 400), (600, 400)),  # second horizontal line
-                           ((0, 600), (600, 600)),  # third horizontal line
-                           ((200, 0), (200, 600)),  # first vertical line
-                           ((400, 0), (400, 600))]  # second vertical line
+        self.grid_lines = [((0, 200), (600, 200)),  # első horizontál vonal
+                           ((0, 400), (600, 400)),  # második horizintál vonal
+                           ((0, 600), (600, 600)),  # harmadik horizintál vonal
+                           ((200, 0), (200, 600)),  # első vertikális vonal
+                           ((400, 0), (400, 600))]  # második vertikális vonal
 
         self.pygame = pygame
 
@@ -15,7 +15,7 @@ class Grid:
 
         self.switch_letter = True
 
-        # search directions  N        NW        W        SW       S       SE      E       NE
+        # helyek keresése  N        NW        W        SW       S       SE      E       NE
         self.search_dirs = [(0, -1), (-1, -1), (-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1)]
 
         self.game_over = False
@@ -60,7 +60,6 @@ class Grid:
         return True
 
     def is_within_bounds(self, x, y):
-        """ True True True True """
         return x >= 0 and x < 3 and y >= 0 and y < 3
 
     def check_grid(self, x, y, letter):
@@ -76,23 +75,22 @@ class Grid:
                         break
                 if count < 3:
                     new_dir = 0
-                    # mapping the indices to opposite direction: 0-4 1-5 2-6 3-7 4-0 5-1 6-2 7-3
                     if index == 0:
-                        new_dir = self.search_dirs[4]  # N to S
+                        new_dir = self.search_dirs[4]
                     elif index == 1:
-                        new_dir = self.search_dirs[5]  # NW to SE
+                        new_dir = self.search_dirs[5]
                     elif index == 2:
-                        new_dir = self.search_dirs[6]  # W to E
+                        new_dir = self.search_dirs[6]
                     elif index == 3:
-                        new_dir = self.search_dirs[7]  # SW to NE
+                        new_dir = self.search_dirs[7]  
                     elif index == 4:
-                        new_dir = self.search_dirs[0]  # S to N
+                        new_dir = self.search_dirs[0] 
                     elif index == 5:
-                        new_dir = self.search_dirs[1]  # SE to NW
+                        new_dir = self.search_dirs[1] 
                     elif index == 6:
-                        new_dir = self.search_dirs[2]  # E to W
+                        new_dir = self.search_dirs[2] 
                     elif index == 7:
-                        new_dir = self.search_dirs[3]  # NE to SW
+                        new_dir = self.search_dirs[3] 
 
                     if self.is_within_bounds(x + new_dir[0], y + new_dir[1]) and self.get_cell_value(x + new_dir[0], y + new_dir[1]) == letter:
                         count += 1
